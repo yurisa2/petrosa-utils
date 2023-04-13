@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "petrosa_utils_YURISA2"
+name = "petrosa"
 version = "0.0.2"
 authors = [
   { name="@yurisa2", email="yuri@sa2.com.br" },
