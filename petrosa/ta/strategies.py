@@ -1,6 +1,6 @@
 import logging
 
-import utils
+from ta import utils
 
 def inside_bar_buy(candles, timeframe, periods=126):
 
