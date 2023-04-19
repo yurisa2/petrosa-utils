@@ -1,5 +1,6 @@
 import datetime
 import pandas as pd
+import copy
 
 def remove_weird_chars(results):
     # results_json = json.loads(json.dumps(results.to_dict(), default=str))
@@ -40,7 +41,12 @@ def dict_time_convert(stats):
 
     return ret_res
 
-def result_maker(bt_stats, bt_params, bt_test_params, test_type):        
+def result_maker(bt_stats, bt_params, bt_test_params, test_type):
+    bt_stats = copy.deepcopy(bt_stats)
+    bt_params = copy.deepcopy(bt_params)
+    bt_test_params = copy.deepcopy(bt_test_params)
+    test_type = copy.deepcopy(test_type)
+                
     if '_trades' in bt_stats:
         del(bt_stats['_trades'])
     if '_strategy' in bt_stats:
