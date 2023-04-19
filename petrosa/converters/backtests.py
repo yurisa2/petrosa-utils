@@ -40,7 +40,7 @@ def dict_time_convert(stats):
 
     return ret_res
 
-def result_maker(bt_stats, params, bt_test_params, test_type):        
+def result_maker(bt_stats, bt_params, bt_test_params, test_type):        
     if '_trades' in bt_stats:
         del(bt_stats['_trades'])
     if '_strategy' in bt_stats:
