@@ -40,23 +40,23 @@ def dict_time_convert(stats):
 
     return ret_res
 
-def result_maker(stats, params, test_params, test_type):
-    if '_trades' in stats:
-        del(stats['_trades'])
-    if '_strategy' in stats:
-        del(stats['_strategy'])
-    if '_equity_curve' in stats:
-        del(stats['_equity_curve'])
+def result_maker(bt_stats, params, bt_test_params, test_type):        
+    if '_trades' in bt_stats:
+        del(bt_stats['_trades'])
+    if '_strategy' in bt_stats:
+        del(bt_stats['_strategy'])
+    if '_equity_curve' in bt_stats:
+        del(bt_stats['_equity_curve'])
         
-    if '_id' in test_params:
-        del(test_params["_id"])
+    if '_id' in bt_test_params:
+        del(bt_test_params["_id"])
 
-    stats = remove_weird_chars(stats)
-    params = remove_weird_chars(params)
+    bt_stats = remove_weird_chars(bt_stats)
+    bt_params = remove_weird_chars(bt_params)
 
-    stats = dict_time_convert(stats)
+    bt_stats = dict_time_convert(bt_stats)
     
-    ret = {**test_params, **stats, **params}
+    ret = {**bt_test_params, **bt_stats, **bt_params}
     ret['test_type'] = test_type
     ret['insert_timestamp'] = datetime.datetime.now()
         
