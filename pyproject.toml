@@ -4,13 +4,16 @@ build-backend = "hatchling.build"
 
 [project]
 name = "petrosa"
-version = "0.0.5"
+version = "0.0.6"
 authors = [
   { name="@yurisa2", email="yuri@sa2.com.br" },
 ]
 description = "utilities for PETROSA"
 readme = "README.md"
 requires-python = ">=3.7"
+dependencies = ["pandas==2.0.0", 
+                "bson==0.5.10"]
+
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -20,3 +23,4 @@ classifiers = [
 [project.urls]
 "Homepage" = "https://github.com/pypa/sampleproject"
 "Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
+
