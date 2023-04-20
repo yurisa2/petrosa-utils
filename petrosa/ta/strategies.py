@@ -11,6 +11,7 @@ def inside_bar_buy(candles, timeframe, periods=126):
 
     if len(dat) < periods:
         logging.info('Error: insufficient data')
+        return {}
 
     close = float(list(dat['Close'])[-1])
     low = float(list(dat['Low'])[-1])
@@ -55,6 +56,7 @@ def inside_bar_sell(candles, timeframe, periods=126):
 
     if len(dat) < periods:
         logging.info('Error: insufficient data')
+        return {}
 
     close = float(list(dat['Close'])[-1])
     low = float(list(dat['Low'])[-1])
@@ -93,6 +95,7 @@ def continuous_stitch_buy(candles, timeframe, periods=126):
 
     if len(dat) < periods:
         logging.info('Error: insufficient data')
+        return {}
 
     close = float(list(dat['Close'])[-1])
     last_close = float(list(dat['Close'])[-2])
@@ -138,6 +141,7 @@ def continuous_stitch_sell(candles, timeframe, periods=126):
 
     if len(dat) < periods:
         logging.info('Error: insufficient data')
+        return {}
 
     low = float(list(dat['Low'])[-1])
     low2 = float(list(dat['Low'])[-2])
@@ -186,6 +190,7 @@ def setup_91_buy(candles, timeframe, periods=126):
 
     if len(dat) < periods:
         logging.info('Error: insufficient data')
+        return {}
 
     close = float(dat['Close'].iloc[-1])
     low = float(dat['Low'].iloc[-1])
@@ -224,6 +229,7 @@ def setup_91_sell(candles, timeframe, periods=126):
 
     if len(dat) < periods:
         logging.info('Error: insufficient data')
+        return {}
 
     close = float(dat['Close'].iloc[-1])
     low = float(dat['Low'].iloc[-1])
@@ -262,6 +268,7 @@ def setup_92_buy(candles, timeframe, periods=126):
 
     if len(dat) < periods:
         logging.info('Error: insufficient data')
+        return {}
 
     low = float(dat['Low'].iloc[-1])
     high = float(dat['High'].iloc[-1])
@@ -300,6 +307,7 @@ def setup_92_sell(candles, timeframe, periods=126):
 
     if len(dat) < periods:
         logging.info('Error: insufficient data')
+        return {}
 
     low = float(dat['Low'].iloc[-1])
     high = float(dat['High'].iloc[-1])
@@ -338,6 +346,7 @@ def setup_93_buy(candles, timeframe, periods=126):
 
     if len(dat) < periods:
         logging.info('Error: insufficient data')
+        return {}
 
     ema9 = dat["Close"].ewm(span=9, min_periods=8, adjust=True).mean()
     inclination = ema9.diff()
@@ -377,6 +386,7 @@ def setup_93_sell(candles, timeframe, periods=126):
 
     if len(dat) < periods:
         logging.info('Error: insufficient data')
+        return {}
 
     ema9 = dat["Close"].ewm(span=9, min_periods=8, adjust=True).mean()
     inclination = ema9.diff()
@@ -416,6 +426,7 @@ def setup_94_buy(candles, timeframe, periods=126):
 
     if len(dat) < periods:
         logging.info('Error: insufficient data')
+        return {}
 
     ema9 = dat["Close"].ewm(span=9, min_periods=8, adjust=True).mean()
     dat['ema'] = ema9
@@ -453,6 +464,7 @@ def setup_94_sell(candles, timeframe, periods=126):
 
     if len(dat) < periods:
         logging.info('Error: insufficient data')
+        return {}
 
     ema9 = dat["Close"].ewm(span=9, min_periods=8, adjust=True).mean()
     dat['ema'] = ema9
@@ -494,6 +506,7 @@ def fox_trap_buy(candles, timeframe, periods=126):
 
     if len(dat) < periods:
         logging.info('Error: insufficient data')
+        return {}
 
     close = float(list(dat['Close'])[-1])
     low = float(list(dat['Low'])[-1])
@@ -540,6 +553,7 @@ def fox_trap_sell(candles, timeframe, periods=126):
 
     if len(dat) < periods:
         logging.info('Error: insufficient data')
+        return {}
 
     close = float(list(dat['Close'])[-1])
     high = float(list(dat['High'])[-1])
@@ -584,6 +598,7 @@ def bear_trap_buy(candles, timeframe, periods=126):
 
     if len(dat) < periods:
         logging.info('Error: insufficient data')
+        return {}
 
     close = float(list(dat['Close'])[-1])
     last_close = float(list(dat['Close'])[-2])
@@ -628,6 +643,7 @@ def bear_trap_sell(candles, timeframe, periods=126):
 
     if len(dat) < periods:
         logging.info('Error: insufficient data')
+        return {}
 
     close = float(list(dat['Close'])[-1])
     last_close = float(list(dat['Close'])[-2])
