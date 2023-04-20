@@ -28,7 +28,6 @@ def remove_weird_chars(results):
     return new_res
 
 def dict_time_convert(stats):
-    from datetime import timedelta
     ret_res = {}
     
     for key in stats.keys():
@@ -77,7 +76,13 @@ def list_maker(stats, test_params):
     list_doc['period'] = test_params['period']
     list_doc['symbol'] = test_params['symbol']
     list_doc['trades_list'] = stats._trades.to_dict('records')
+    
+    td_list = []
+    
+    for item in list_doc['trades_list']:
+        td_list.append(dict_time_convert(item))
 
+    list_doc['trades_list'] = td_list
     ret = {**list_doc, **test_params}
     
     return ret
