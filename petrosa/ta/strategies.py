@@ -2,6 +2,23 @@ import logging
 
 from ..ta import utils
 
+strategy_list = ['inside_bar_buy',
+                 'inside_bar_sell',
+                 'continuous_stitch_buy',
+                 'continuous_stitch_sell',
+                 'setup_91_buy',
+                 'setup_91_sell',
+                 'setup_92_buy',
+                 'setup_92_sell',
+                 'setup_93_buy',
+                 'setup_93_sell',
+                 'setup_94_buy',
+                 'setup_94_sell',
+                 'fox_trap_buy',
+                 'fox_trap_sell',
+                 'bear_trap_buy',
+                 'bear_trap_sell'
+                 ]
 
 def inside_bar_buy(candles, timeframe, periods=126):
 
