@@ -4,15 +4,17 @@ build-backend = "hatchling.build"
 
 [project]
 name = "petrosa"
-version = "0.0.14"
+version = "0.0.15"
 authors = [
   { name="@yurisa2", email="yuri@sa2.com.br" },
 ]
 description = "utilities for PETROSA"
 readme = "README.md"
 requires-python = ">=3.7"
-dependencies = ["pandas==2.0.0",
-                "pymongo==4.3.3"]
+dependencies = ["pandas",
+                "pymongo",
+                "kafka-python"
+                ]
 
 classifiers = [
     "Programming Language :: Python :: 3",
