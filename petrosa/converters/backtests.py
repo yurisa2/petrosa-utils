@@ -1,6 +1,8 @@
-import datetime
-import pandas as pd
 import copy
+import datetime
+
+import pandas as pd
+
 
 def remove_weird_chars(results):
     # results_json = json.loads(json.dumps(results.to_dict(), default=str))
