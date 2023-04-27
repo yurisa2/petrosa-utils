@@ -41,3 +41,36 @@ def get_data(mongo_db, col_name, ticker, limit=999999999):
     data_df = data_df.set_index('datetime')
 
     return data_df
+
+
+def post_results(mongo_db, symbol, test_period, doc, strategy):
+    client = get_client()
+    db = client[mongo_db]
+    col = db['backtest_results']
+    col.delete_one({"strategy": strategy,
+                                                          "symbol": symbol,
+                                                          "period": test_period
+                                                          })
+    col.update_one(
+        {"strategy": strategy,
+         "symbol": symbol,
+         "period": test_period
+         }, {"$set": doc}, upsert=True)
+    return True
+
+
+def post_list_results(mongo_db, symbol, test_period, doc, strategy):
+    client = get_client()
+    db = client[mongo_db]
+    col = db['backtest_results_lists']
+    col.delete_one({"strategy": strategy,
+                                                                "symbol": symbol,
+                                                                "period": test_period
+                                                                })
+
+    col.update_one(
+        {"strategy": strategy,
+         "symbol": symbol,
+         "period": test_period
+         }, {"$set": doc}, upsert=True)
+    return True
