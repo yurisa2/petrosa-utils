@@ -17,7 +17,9 @@ strategy_list = ['inside_bar_buy',
                  'fox_trap_buy',
                  'fox_trap_sell',
                  'bear_trap_buy',
-                 'bear_trap_sell'
+                 'bear_trap_sell',
+                 'bbss_sell',
+                 'bbss_buy',
                  ]
 
 def inside_bar_buy(candles, timeframe, periods=126):
@@ -694,5 +696,64 @@ def bear_trap_sell(candles, timeframe, periods=126):
                                         take_profit=low -
                                         ((high - low) * 2),
                                         direction='LOWER')
+    else:
+        return {}
+
+
+def bbss_sell(candles, timeframe, periods=30):
+
+    dat = candles
+
+    dat = dat.sort_index(ascending=True)
+
+    if len(dat) < periods:
+        logging.info('Error: insufficient data')
+        return {}
+
+    low = float(list(dat['Low'])[-1])
+    high = float(list(dat['High'])[-1])
+    close = float(list(dat['Close'])[-1])
+
+
+
+    if not (False in list(dat.Close.iloc[-9:].values > dat.Close.iloc[-13:-4].values)) and dat.Close.iloc[-10] < dat.Close.iloc[-14]:
+
+        return utils.strategy_output(ticker=dat.ticker.iloc[-1],
+                                        timeframe=timeframe,
+                                        pet_datetime=dat.index[-1],
+                                        entry_value=high,
+                                        disruption_value=high,
+                                        stop_loss=high,
+                                        take_profit=low -
+                                        ((high - low) * 2),
+                                        direction='LOWER')
+    else:
+        return {}
+
+
+def bbss_buy(candles, timeframe, periods=30):
+
+    dat = candles
+
+    dat = dat.sort_index(ascending=True)
+
+    if len(dat) < periods:
+        logging.info('Error: insufficient data')
+        return {}
+
+    low = float(list(dat['Low'])[-1])
+    high = float(list(dat['High'])[-1])
+
+    if not (False in list(dat.Close.iloc[-9:].values < dat.Close.iloc[-13:-4].values)) and dat.Close.iloc[-10] > dat.Close.iloc[-14]:
+
+        return utils.strategy_output(ticker=dat.ticker.iloc[-1],
+                                        timeframe=timeframe,
+                                        pet_datetime=dat.index[-1],
+                                        entry_value=low,
+                                        disruption_value=low,
+                                        stop_loss=low,
+                                        take_profit=high +
+                                        ((high - low) * 2),
+                                        direction='UPPER')
     else:
         return {}

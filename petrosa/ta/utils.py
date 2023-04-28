@@ -10,7 +10,7 @@ def strategy_output(
     stop_loss,
     take_profit,
     direction
-):
+) -> dict:
 
     if (timeframe == 'm15'):
         minutes = 15
