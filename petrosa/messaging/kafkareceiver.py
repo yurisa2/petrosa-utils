@@ -3,7 +3,7 @@ import os
 from kafka import KafkaConsumer
 
 
-def get_consumer(topic):
+def get_consumer(topic) -> KafkaConsumer:
     consumer = KafkaConsumer(topic,
                              bootstrap_servers=os.getenv(
                                  'KAFKA_SUBSCRIBER', 'localhost:9093'),
