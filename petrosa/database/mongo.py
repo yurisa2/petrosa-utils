@@ -7,7 +7,7 @@ import pymongo
 def get_client() -> pymongo.MongoClient:
     client = pymongo.MongoClient(
         os.getenv(
-            'MONGO_URI', 'mongodb://root:QnjfRW7nl6@localhost:27017'),
+            'MONGO_URI', 'mongodb://root:mopMuXDvZL@localhost:27017'),
         readPreference='secondaryPreferred',
         appname=os.getenv("NEW_RELIC_APP_NAME", "no-name-from-utils")
     )
