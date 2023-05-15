@@ -721,8 +721,8 @@ def bbss_sell(candles, timeframe, periods=30):
         return utils.strategy_output(ticker=dat.ticker.iloc[-1],
                                         timeframe=timeframe,
                                         pet_datetime=dat.index[-1],
-                                        entry_value=dat.Close.iloc[-1],
-                                        disruption_value=high,
+                                        entry_value=low,
+                                        disruption_value=low,
                                         stop_loss=high,
                                         take_profit=low -
                                         ((high - low) * 2),
@@ -749,8 +749,8 @@ def bbss_buy(candles, timeframe, periods=30):
         return utils.strategy_output(ticker=dat.ticker.iloc[-1],
                                         timeframe=timeframe,
                                         pet_datetime=dat.index[-1],
-                                        entry_value=dat.Close.iloc[-1],
-                                        disruption_value=low,
+                                        entry_value=high,
+                                        disruption_value=high,
                                         stop_loss=low,
                                         take_profit=high +
                                         ((high - low) * 2),
