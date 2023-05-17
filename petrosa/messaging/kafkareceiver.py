@@ -8,7 +8,7 @@ def get_consumer(topic) -> KafkaConsumer:
                              bootstrap_servers=os.getenv(
                                  'KAFKA_SUBSCRIBER', 'localhost:9093'),
                              group_id=os.getenv(
-                                 "NEW_RELIC_APP_NAME")
+                                 "OTEL_SERVICE_NAME")
                              )
 
     return consumer

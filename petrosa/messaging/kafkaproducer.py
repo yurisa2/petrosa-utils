@@ -7,7 +7,7 @@ def get_producer():
     producer = KafkaProducer(bootstrap_servers=os.getenv(
         'KAFKA_ADDRESS', 'localhost:9092'),
                              client_id=os.getenv(
-                                 "NEW_RELIC_APP_NAME")
+                                 "OTEL_SERVICE_NAME")
                              )
 
     return producer

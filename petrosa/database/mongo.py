@@ -9,7 +9,7 @@ def get_client() -> pymongo.MongoClient:
         os.getenv(
             'MONGO_URI', 'mongodb://root:mopMuXDvZL@localhost:27017'),
         readPreference='secondaryPreferred',
-        appname=os.getenv("NEW_RELIC_APP_NAME", "no-name-from-utils")
+        appname=os.getenv("OTEL_SERVICE_NAME", "no-name-from-utils")
     )
 
     return client
