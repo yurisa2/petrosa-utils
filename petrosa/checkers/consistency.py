@@ -5,13 +5,13 @@ def generate_benchmark_list(start: datetime.datetime,
                             end: datetime.datetime, 
                             period: str):
     
-    if period == '5m':
+    if period == '5m' or period == 'm5':
         minutes = 5
-    elif period == '15m':
+    elif period == '15m' or period == 'm15':
         minutes = 15
-    elif period == '30m':
+    elif period == '30m' or period == 'm30':
         minutes = 30
-    elif period == '1h':
+    elif period == '1h' or period == 'h1':
         minutes = 60
     else:
         minutes = 0
