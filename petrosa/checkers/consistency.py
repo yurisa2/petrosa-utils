@@ -21,7 +21,7 @@ def generate_benchmark_list(start: datetime.datetime,
     
     while datepointer <= end:
         if(datepointer.minute % minutes == 0):
-            division_list.append(int(datepointer.replace(second=0, microsecond=0).strftime('%s')))
+            division_list.append(datepointer.replace(second=0, microsecond=0))
         
         datepointer = datepointer + datetime.timedelta(minutes=1)
     
