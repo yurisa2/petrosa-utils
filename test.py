@@ -1,1 +1,15 @@
-boom = {'Start': '2022-09-23 02:30:00', 'End': '2022-12-22 23:55:00', 'Duration': '90 days 21:25:00', 'Exposure Time [%]': 37.60791504316602, 'Equity Final [$]': 108778.69999999997, 'Equity Peak [$]': 110271.50000000004, 'Return [%]': 8.778699999999969, 'Buy & Hold Return [%]': -12.714418353744254, 'Return (Ann.) [%]': 42.41600949120401, 'Volatility (Ann.) [%]': 38.18876234170225, 'Sharpe Ratio': 1.1106934839018228, 'Sortino Ratio': 2.7294520833040017, 'Calmar Ratio': 4.084304008497342, 'Max. Drawdown [%]': -10.385125446822286, ...}
+import pandas as pd
+
+from petrosa.checkers import consistency
+from petrosa.database import mongo
+
+data = mongo.get_client()["petrosa_crypto"]["candles_h1"].find({"ticker": "BTCUSDT"}).sort("datetime", -1).limit(1010)
+
+df = pd.DataFrame(list(data))
+
+const = consistency.check_consistency(start=min(df["datetime"]), 
+                                      end=max(df["datetime"]), 
+                                      actual=df["datetime"],
+                                      period="h1"
+                                      )
+print(const)

@@ -1,5 +1,5 @@
 import datetime
-
+import pandas as pd
 
 def generate_benchmark_list(start: datetime.datetime, 
                             end: datetime.datetime, 
@@ -30,15 +30,19 @@ def generate_benchmark_list(start: datetime.datetime,
     return division_list
 
 
-def check_consistency(start: datetime.datetime, 
-                      end: datetime.datetime, 
-                      actual: list , 
-                      period: str):
+def check_consistency(start: datetime.datetime|pd.Timestamp, 
+                      end: datetime.datetime|pd.Timestamp, 
+                      actual: list|pd.Series , 
+                      period: str) -> list:
     benchmark = generate_benchmark_list(start, end, period)
     
     lacking = []
+    if isinstance(actual, pd.Series):
+        actual = actual.to_list()
     
     for item in benchmark:
+        if isinstance(item, pd.Timestamp):
+            item = item.to_pydatetime()
         if item not in actual:
             lacking.append(item)
             
