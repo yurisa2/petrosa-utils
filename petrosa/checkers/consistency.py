@@ -30,9 +30,9 @@ def generate_benchmark_list(start: datetime.datetime,
     return division_list
 
 
-def check_consistency(start: datetime.datetime|pd.Timestamp, 
-                      end: datetime.datetime|pd.Timestamp, 
-                      actual: list|pd.Series , 
+def check_consistency(start, 
+                      end, 
+                      actual , 
                       period: str) -> list:
     benchmark = generate_benchmark_list(start, end, period)
     
