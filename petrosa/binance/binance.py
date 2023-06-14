@@ -19,22 +19,12 @@ def get_future_assets():
     return asset_list_raw
 
     
-def build_request(ticker, type, price, stop_loss_p, take_profit_p, valid_until):
+def build_request(ticker, type, price, stop_loss, take_profit, valid_until):
     token = f"{os.environ.get('BINANCE_API_KEY')};{os.environ.get('BINANCE_API_SECRET')}"
 
     price = float(price)
-    stop_loss_p = float(stop_loss_p)
-    take_profit_p = float(take_profit_p)
-
-    if type == "BUY":
-        stop_loss = price * (1 - (stop_loss_p / 100))
-        take_profit = price * (1 + (take_profit_p / 100))
-    elif type == "SELL":
-        stop_loss = price * (1 + (stop_loss_p / 100))
-        take_profit = price * (1 - (take_profit_p / 100))
-    else:
-        logging.error("wrong stops bruh")
-        return
+    stop_loss = float(stop_loss)
+    take_profit = float(take_profit)
 
     data = {
         "token": token,
