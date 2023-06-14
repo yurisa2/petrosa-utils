@@ -58,8 +58,8 @@ def request_it(request) -> str:
     return resp.text
     
     
-def send_order(ticker, type, price, stop_loss_p, take_profit_p, valid_until) -> str:
-    req = build_request(ticker, type, price, stop_loss_p, take_profit_p, valid_until)
+def send_order(ticker, type, price, stop_loss, take_profit, valid_until) -> str:
+    req = build_request(ticker, type, price, stop_loss, take_profit, valid_until)
     ans = request_it(req)
     
     return ans
