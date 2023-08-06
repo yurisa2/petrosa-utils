@@ -7,7 +7,7 @@ import pymongo
 def get_client() -> pymongo.MongoClient:
     client = pymongo.MongoClient(
         os.getenv(
-            'MONGO_URI', 'mongodb://root:mopMuXDvZL@localhost:27017'),
+            'MONGO_URI', 'mongodb://root:9M1RSaFuut@localhost:27017'),
         readPreference='secondaryPreferred',
         appname=os.getenv("OTEL_SERVICE_NAME", "no-name-from-utils")
     )
