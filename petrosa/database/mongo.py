@@ -2,6 +2,7 @@ import os
 
 import pandas as pd
 import pymongo
+from datetime import datetime
 
 
 def get_client() -> pymongo.MongoClient:
@@ -42,6 +43,44 @@ def get_data(mongo_db, col_name, ticker, limit=999999999):
 
     return data_df
 
+
+def get_data_by_date(mongo_db: str, 
+                     col_name:str , 
+                     ticker: str, 
+                     start_date: datetime, 
+                     end_date=None, 
+                     rename=False):
+    
+        client = get_client()
+        db = client[mongo_db]
+        history = db[col_name]
+    
+        if end_date is None:
+            end_date = start_date + pd.Timedelta(days=1)
+    
+        results = history.find({'ticker': ticker,
+                                'datetime': {'$gte': start_date,
+                                            '$lte': end_date}},
+                            sort=[('datetime', -1)])
+        results_list = list(results)
+    
+        if (len(results_list) == 0):
+            return []
+    
+        data_df = pd.DataFrame(results_list)
+    
+        data_df = data_df.sort_values("datetime")
+    
+        if rename:
+            data_df = data_df.rename(columns={"open": "Open",
+                                            "high": "High",
+                                            "low": "Low",
+                                            "close": "Close"}
+                                    )
+        
+        data_df = data_df.set_index('datetime')
+    
+        return data_df
 
 def post_results(mongo_db, symbol, test_period, doc, strategy):
     client = get_client()
