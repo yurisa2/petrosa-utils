@@ -20,7 +20,7 @@ def connect_mysql():
     return cnx, cursor
 
 
-def build_sql(record_list: list[dict], table: str, mode="REPLACE") -> str:
+def build_sql(record_list: list, table: str, mode="REPLACE") -> str:
 
     sql = f"{mode} INTO `{table}` ("
 
