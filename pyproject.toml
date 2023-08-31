@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "petrosa"
-version = "0.0.42"
+version = "0.0.43"
 authors = [
   { name="@yurisa2", email="yuri@sa2.com.br" },
 ]
@@ -15,9 +15,7 @@ dependencies = ["pandas",
                 "pymongo",
                 "kafka-python",
                 "requests",
-                "mysql-connector",
-                "logging"
-                ]
+                "mysql-connector"                ]
 
 classifiers = [
     "Programming Language :: Python :: 3",
