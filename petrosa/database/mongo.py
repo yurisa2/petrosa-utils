@@ -1,8 +1,13 @@
+import logging
 import os
+from datetime import datetime
 
 import pandas as pd
 import pymongo
-from datetime import datetime
+import pkg_resources
+
+ver = pkg_resources.get_distribution('petrosa').version
+logging.info("petrosa-utils version: " + ver)
 
 
 def get_client() -> pymongo.MongoClient:

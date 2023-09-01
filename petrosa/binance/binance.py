@@ -4,6 +4,12 @@ import logging
 import os
 
 import requests
+import pkg_resources
+import logging
+
+ver = pkg_resources.get_distribution('petrosa').version
+logging.info("petrosa-utils version: " + ver)
+
 
 
 def get_future_assets():

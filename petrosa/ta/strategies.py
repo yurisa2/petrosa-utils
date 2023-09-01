@@ -1,6 +1,12 @@
 import logging
 
 from ..ta import utils
+import pkg_resources
+import logging
+
+ver = pkg_resources.get_distribution('petrosa').version
+logging.info("petrosa-utils version: " + ver)
+
 
 strategy_list = ['inside_bar_buy',
                  'inside_bar_sell',

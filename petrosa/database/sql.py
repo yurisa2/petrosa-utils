@@ -1,8 +1,12 @@
 import logging
 import os
+import pkg_resources
 
 import mysql.connector
 
+
+ver = pkg_resources.get_distribution('petrosa').version
+logging.info("petrosa-utils version: " + ver)
 
 def connect_mysql():
     cnx = mysql.connector.connect(user=os.getenv("MYSQL_CRYPTO_USER"),

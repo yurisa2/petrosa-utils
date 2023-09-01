@@ -1,5 +1,11 @@
 import datetime
 import pandas as pd
+import pkg_resources
+import logging
+
+ver = pkg_resources.get_distribution('petrosa').version
+logging.info("petrosa-utils version: " + ver)
+
 
 def generate_benchmark_list(start: datetime.datetime, 
                             end: datetime.datetime, 
