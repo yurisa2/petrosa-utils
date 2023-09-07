@@ -8,14 +8,15 @@ import mysql.connector
 ver = pkg_resources.get_distribution('petrosa').version
 logging.info("petrosa-utils version: " + ver)
 
+
 def connect_mysql():
-    cnx = mysql.connector.connect(user=os.getenv("MYSQL_CRYPTO_USER"),
+    cnx = mysql.connector.connect(user=os.getenv("MYSQL_USER"),
                                   password=os.getenv(
-        "MYSQL_CRYPTO_PASSWORD"),
+        "MYSQL_PASSWORD"),
         host=os.getenv(
-        "MYSQL_CRYPTO_SERVER"),
+        "MYSQL_SERVER"),
         database=os.getenv(
-        "MYSQL_CRYPTO_DB"),
+        "MYSQL_DB"),
         connection_timeout=30
     )
 
