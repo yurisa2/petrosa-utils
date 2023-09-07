@@ -54,7 +54,7 @@ def build_sql(record_list, table, mode="REPLACE") -> str:
     return sql
 
 
-def update_sql(record_list: list[dict], table: str, mode="REPLACE"):
+def update_sql(record_list: list, table: str, mode="REPLACE"):
 
     logging.info(f"Inserting {len(record_list)} records on {table}")
     cnx, cursor = connect_mysql()
