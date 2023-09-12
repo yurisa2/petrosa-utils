@@ -66,3 +66,15 @@ def update_sql(record_list: list, table: str, mode="REPLACE"):
     cnx.commit()
     cursor.close()
     cnx.close()
+
+
+def run_generic_sql(sql_str):
+
+    logging.info(f"Running Generic SQL {sql_str}")
+    cnx, cursor = connect_mysql()
+    
+    cursor.execute(sql_str)
+
+    cnx.commit()
+    cursor.close()
+    cnx.close()
