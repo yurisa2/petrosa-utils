@@ -69,9 +69,11 @@ def run_generic_sql(sql_str):
     cnx, cursor = connect_mysql()
 
     cursor.execute(sql_str)
-    if(sql_str[:5] == "SELECT" or sql_str[:5] == "select" or sql_str[:5] == "Select"):
+    if(sql_str[:6] == "SELECT" or sql_str[:6] == "select" or sql_str[:6] == "Select"):
+        logging.info("Returning rows")
         rows = cursor.fetchall()
     else:
+        logging.info("Returning None")
         rows = None
     cnx.commit()
     cursor.close()
