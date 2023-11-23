@@ -18,7 +18,7 @@ def connect_mysql():
         connection_timeout=30,
     )
 
-    cursor = cnx.cursor(buffered=True)
+    cursor = cnx.cursor(buffered=True, dictionary=True)
 
     return cnx, cursor
 
